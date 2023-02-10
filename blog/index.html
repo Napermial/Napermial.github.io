@@ -2,73 +2,88 @@
 <html>
 
 <head>
-    <title>Történelmi szemelvények</title>
+    <title>Hihetetlen történelem</title>
     <style>
-        #blog-post {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: justify;
-            font-family: sans-serif;
+        /* Add some basic styling to the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
         h1 {
             font-size: 36px;
-            margin-bottom: 20px;
+            text-align: center;
+            margin-top: 50px;
         }
 
-        #content {
+        .post-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .post-card {
+            width: 300px;
+            height: 470px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .post-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .post-card h2 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .post-card p {
             font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            text-align: justify;
+            padding: 0 20px;
+        }
+
+        .post-card a {
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-
-    <h1>Ukrajna ősi mitológiája</h1>
-    <div id="blog-post">
-        <h1 id="title"></h1>
-        <div class="blog-post-content"></div>
+    <h1>Hihetetlen történelem</h1>
+    <div class="post-list">
+        <!-- Add a post card for each of your blog posts -->
+        <div class="post-card">
+            <img src="history_1.png" alt="Post Thumbnail">
+            <h2>Kereszténység előtti Ukrán mitológia</h2>
+            <p>Ukrajna előtti mitológia részben megérte a kereszténység bevezetését, de jelentős része megőrizte vallási
+                jelentéseit és fennmaradt a középkori irodalomban és a szovjet mitológiában.</p>
+            <a href="mithologie-ukraini.html">Tovább</a>
+        </div>
+        <div class="post-card">
+            <img src="history_3.png" alt="Post Thumbnail">
+            <h2>Orosz titkosrendőrség</h2>
+            <p>II. Sándor orosz cár elleni sikeres merénylet hatására
+                1882-ben egy új titkosrendőrséget hoztak létre az állami rend és közbiztonság megóvása érdekében.</p>
+            <a href="nix-kgb.html">Tovább</a>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-
-        async function getMarkdownContent(filePath) {
-            const response = await fetch(filePath);
-            const markdown = await response.text();
-            return markdown;
-        }
-
-        function renderMarkdown(markdown) {
-            // Converts markdown to HTML using marked.js
-            const renderer = new marked.Renderer();
-            marked.setOptions({
-                renderer: renderer,
-                gfm: true,
-                tables: true,
-                breaks: false,
-                pedantic: false,
-                sanitize: false,
-                smartLists: true,
-                smartypants: false
-            });
-            return marked(markdown);
-        }
-
-        getMarkdownContent('/blog/mythology-of-Ukraine.md').then(markdown => {
-            const contentElement = document.getElementById("content");
-
-            const blogPostContent = renderMarkdown(markdown);
-            contentElement.innnerHTML = blogPostContent;
-
-
-            document.querySelector('.blog-post-content').innerHTML = blogPostContent;
-
-        });
-
-    </script>
 </body>
-
-</html>

@@ -26,13 +26,13 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <h1>History Blog</h1>
+
+    <h1>Ukrajna ősi mitológiája</h1>
     <div id="blog-post">
         <h1 id="title"></h1>
-        <div class="blog-post-content" ></div>
+        <div class="blog-post-content"></div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
 
         async function getMarkdownContent(filePath) {
@@ -48,9 +48,7 @@
         }
 
         getMarkdownContent('/blog/mythology-of-Ukraine.md').then(markdown => {
-            const titleElement = document.getElementById("title");
             const contentElement = document.getElementById("content");
-            const title = 'Ukrajna ősi mitológiája'
 
             titleElement.innerText = title;
 

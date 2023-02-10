@@ -42,23 +42,6 @@
         }
 
         function renderMarkdown(markdown) {
-            // Your markdown rendering code here
-            // For example, using marked.js:
-            return marked(markdown);
-        }
-
-        getMarkdownContent('/blog/mythology-of-Ukraine.md').then(markdown => {
-            const contentElement = document.getElementById("content");
-
-            const blogPostContent = renderMarkdown(markdown);
-            contentElement.innnerHTML = blogPostContent;
-
-
-            document.querySelector('.blog-post-content').innerHTML = blogPostContent;
-
-        });
-
-        function renderMarkdown(markdown) {
             // Converts markdown to HTML using marked.js
             const renderer = new marked.Renderer();
             marked.setOptions({
@@ -74,6 +57,16 @@
             return marked(markdown);
         }
 
+        getMarkdownContent('/blog/mythology-of-Ukraine.md').then(markdown => {
+            const contentElement = document.getElementById("content");
+
+            const blogPostContent = renderMarkdown(markdown);
+            contentElement.innnerHTML = blogPostContent;
+
+
+            document.querySelector('.blog-post-content').innerHTML = blogPostContent;
+
+        });
 
     </script>
 </body>

@@ -50,9 +50,6 @@
         getMarkdownContent('/blog/mythology-of-Ukraine.md').then(markdown => {
             const contentElement = document.getElementById("content");
 
-            titleElement.innerText = title;
-
-
             const blogPostContent = renderMarkdown(markdown);
             contentElement.innnerHTML = blogPostContent;
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Történelmi szemelvények</title>
+    <style>
+        #blog-post {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: justify;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #content {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <h1>History Blog</h1>
+    <div id="blog-post">
+        <h1 id="title"></h1>
+        <div id="content"></div>
+    </div>
+
+    <script>
+
+        async function getMarkdownContent(filePath) {
+            const response = await fetch(filePath);
+            const markdown = await response.text();
+            return markdown;
+        }
+
+        function renderMarkdown(markdown) {
+            // Your markdown rendering code here
+            // For example, using marked.js:
+            return marked(markdown);
+        }
+
+        getMarkdownContent('/mythology-of-Ukraine.md').then(markdown => {
+            const titleElement = document.getElementById("title");
+            const contentElement = document.getElementById("content");
+            const title = 'Ukrajna ősi mitológiája'
+
+            titleElement.innerText = title;
+
+
+            const blogPostContent = renderMarkdown(markdown);
+            contentElement.innnerHTML = blogPostContent;
+
+
+            document.querySelector('#blog-post-content').innerHTML = blogPostContent;
+
+        });
+
+        function renderMarkdown(markdown) {
+            // Converts markdown to HTML using marked.js
+            const renderer = new marked.Renderer();
+            marked.setOptions({
+                renderer: renderer,
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: false
+            });
+            return marked(markdown);
+        }
+
+
+    </script>
+</body>
+
+</html>
